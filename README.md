@@ -24,8 +24,7 @@ Hasło - `Password!`
 
 **Windows - docker**
 ```shell
-docker run --network=host -it curlimages/curl --location 'http://localhost:5143/api/Warehouse' --header 'Content-Type: application/json'
- --data '{ \"idProduct\": 1, \"idWarehouse\": 1, \"Amount\": 125, \"createdAt\": \"2024-05-22T18:23:20.750Z\" }'
+docker run --network=host --rm -it curlimages/curl --location 'http://localhost:5143/api/Warehouse' --header 'Content-Type: application/json' --data '{ \"idProduct\": 1, \"idWarehouse\": 1, \"Amount\": 125, \"createdAt\": \"2024-05-22T18:23:20.750Z\" }'
 ```
 
 **Linux - curl**
