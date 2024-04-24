@@ -1,0 +1,25 @@
+---
+name: "s27496-apbd-zad6"
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: "mssql"
+    hostname: "mssql"
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Password!"
+    ports:
+      - "127.0.0.1:1433:1433"
+  app:
+    build: .
+    container_name: "app"
+    hostname: "app"
+    depends_on:
+      - db
+    ports:
+      - "127.0.0.1:5143:5143"
+    environment:
+      DB_CONNECTION_STRING: "Server=mssql,1433;Trusted_Connection=False;User=sa;Password=Password!"
+      ASPNETCORE_URLS: http://0.0.0.0:5143
+      ASPNETCORE_ENVIRONMENT: Development
+    restart: no
